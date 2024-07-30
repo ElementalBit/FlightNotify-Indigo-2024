@@ -1,8 +1,14 @@
 from flask import Flask, request
 from flask_cors import CORS
 from db_connect import get_database
-from json import dumps
+from json import dumps, loads
 from bson import ObjectId
+from pywebpush import webpush, WebPushException
+from flask import current_app
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
 CORS(app)
@@ -65,15 +71,59 @@ def smsUpdate():
 def pushNotificationUpdate():
     data = request.get_json()
     db = get_database()
-    print(data)
+
     user = db.users.update_one(
-        {"_id": ObjectId(data["user_id"])}, 
-        {"$push": {
-            "notifications": data["body"]
-        }}
-        )
-    print(user)
+        {"_id": ObjectId(data["user_id"])}, {"$push": {"notifications": data["body"]}}
+    )
+    print("Inside /api/notifications/push", data)
+    if data.get("subscription", None):
+        trigger_push_notifications(data["subscription"], data)
+
     return dumps(user, default=str)
+
+
+@app.route("/api/push-subscriptions", methods=["POST"])
+def create_push_subscription():
+    data = request.get_json()
+    db = get_database()
+    print("Inside /api/push-subscriptions", data)
+    user = db.users.find_one({"_id": ObjectId(data["user_id"])})
+    print("Inside /api/push-subscriptions user", user)
+
+    if user.get("push_subscription", None) is None:
+        result = db.users.update_one(
+            {"_id": ObjectId(data["user_id"])},
+            {"$set": {"push_subscription": loads(data["subscription_json"])}},
+        )
+        print("Update push_subscriptions result", result)
+
+    return dumps({"status": "success"})
+
+
+def trigger_push_notifications(subscription, data):
+    msg = {"title": data.get("title", ""), "body": data["body"]}
+    try:
+        print("Sending Push Notification", subscription)
+        response = webpush(
+            subscription_info=subscription,
+            data=dumps(msg),
+            vapid_private_key=os.getenv("VAPID_PRIVATE_KEY"),
+            vapid_claims={
+                "sub": "mailto:{}".format(
+                    os.getenv("VAPID_CLAIM_EMAIL"))
+            }
+        )
+        print("Successfully sent notification", response)
+        return response.ok
+    except WebPushException as ex:
+        if ex.response and ex.response.json():
+            extra = ex.response.json()
+            print("Remote service replied with a {}:{}, {}",
+                  extra.code,
+                  extra.errno,
+                  extra.message
+                  )
+        return False
 
 
 if __name__ == "__main__":

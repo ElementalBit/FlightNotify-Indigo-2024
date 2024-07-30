@@ -38,6 +38,7 @@ FlightNotify is built using a combination of modern technologies to ensure relia
 - **Notifications:**
   - **Twilio:** API service for sending SMS notifications.
   - **SMTPlib:** Library for sending email notifications.
+  - **Web Push API:** Allows web applications to receive and send push notifications from a server, enabling real-time updates and interactions even when the application is not active in the browser.
 
 - **Database:**
   - **MongoDB:** NoSQL Database to store user, ticket and flight related data.
@@ -51,13 +52,16 @@ Flask              3.0.3
 Flask-Cors         4.0.1
 kafka-python       2.0.2
 pip                24.1.2
+py-vapid           1.9.1
 PyJWT              2.8.0
 pymongo            4.8.0
+python-dotenv      1.0.1
+pywebpush          2.0.0
 requests           2.32.3
 twilio             9.2.3
 ```
 ## Setup
-### 1. .env File
+### 1. .env File in server directory
 ```
 # SMS Server
 TWILIO_ACCOUNT_SID=<account_sid>
@@ -70,8 +74,18 @@ EMAIL_PASSWORD=<google_app_password>
 
 # MongoDB 
 MOONGODB_CONNECTION_STRING=<MongoDB_connection_string>
+
+# Web push VAPid keys
+VAPID_PUBLIC_KEY=<vapid_public_key>
+VAPID_PRIVATE_KEY=<vapid_private_key>
+VAPID_CLAIM_EMAIL=<vapid_claim_email>
 ```
-### 2. Send flight update to 
+### 2. .env File in client directory
+```
+# Web push VAPid keys
+VAPID_PUBLIC_KEY=<vapid_public_key>
+```
+### 3. Send flight update to 
 ```js
 POST http://127.0.0.1:5000/api/flight-update
 body: {
@@ -113,6 +127,7 @@ body: {
 ![alt text](documents/db_flights_collections.jpg)
 ![alt text](documents/email_notification_anant.jpg)
 ![alt text](documents/sms_notification_radhika.jpg)
+![alt text](documents/frontend_push_notification.jpg)
 ![alt text](documents/frontend_home.jpg)
 ![alt text](documents/frontend_my-trips.jpg)
 ![alt text](documents/frontend_notifications.jpg)

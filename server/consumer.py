@@ -106,7 +106,8 @@ if __name__ == "__main__":
                     payload = {
                         "user_id": passenger["_id"],
                         "body": msg,
-                        "token": ""
+                        "subscription": passenger.get("push_subscription", None),
+                        "title": f"{flight_details['flight_number']} {decoded_message['status']}"
                     }
 
                     push_notification = requests.post(
