@@ -5,6 +5,7 @@ Welcome to FlightNotify, a real-time flight status update service. FlightNotify 
 - [Introduction](#introduction)
 - [Features](#features)
 - [Technologies Used](#technologies-used)
+- [Setup](#setup)
 - [Block Diagram](#block-diagram)
 - [System Workflow](#system-workflow)
 - [Screenshots](#screenshots)
@@ -55,7 +56,34 @@ pymongo            4.8.0
 requests           2.32.3
 twilio             9.2.3
 ```
+## Setup
+### 1. .env File
+```
+# SMS Server
+TWILIO_ACCOUNT_SID=<account_sid>
+TWILIO_AUTH_TOKEN=<auth_token>
+TWILIO_NUMBER=<generated_phone_number>
 
+# Email Server SMTP
+EMAIL_SENDER=<your_email_address>
+EMAIL_PASSWORD=<google_app_password>
+
+# MongoDB 
+MOONGODB_CONNECTION_STRING=<MongoDB_connection_string>
+```
+### 2. Send flight update to 
+```js
+POST http://127.0.0.1:5000/api/flight-update
+body: {
+    "flight_number" : "BA202",
+    "status" : "Gate-Change",
+    "departure_time" : "2023-07-25T09:30:00.000+0000",
+    "arrival_time" : "2023-07-25T13:30:00.000+0000",
+    "gate" : "C3",
+    "departure_airport" : "DEL",
+    "arrival_airport" : "CCU"
+}
+```
 ## Block Diagram
 ![alt text](documents/diagram.png)
 
