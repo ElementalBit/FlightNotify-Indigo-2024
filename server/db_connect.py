@@ -12,7 +12,7 @@ def get_database():
     # Create a connection using MongoClient. You can import MongoClient or use pymongo.MongoClient
     client = MongoClient(CONNECTION_STRING)
 
-    # Create the database for our example (we will use the same database throughout the tutorial
+    # Create the database and return reference
     return client["indigoDB"]
 
 

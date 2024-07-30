@@ -10,7 +10,6 @@ CORS(app)
 
 @app.route("/api/user/login", methods=["POST"])
 def getUser():
-    # flight data to be published
     data = request.get_json()
     db = get_database()
 
@@ -21,7 +20,6 @@ def getUser():
 
 @app.route("/api/get/notifications/all", methods=["POST"])
 def emailUpdate():
-    # flight data to be published
     data = request.get_json()
     db = get_database()
 
@@ -32,7 +30,6 @@ def emailUpdate():
 
 @app.route("/api/get/trips/all", methods=["POST"])
 def smsUpdate():
-    # flight data to be published
     data = request.get_json()
     db = get_database()
 
@@ -66,7 +63,6 @@ def smsUpdate():
 
 @app.route("/api/notifications/push", methods=["POST"])
 def pushNotificationUpdate():
-    # flight data to be published
     data = request.get_json()
     db = get_database()
     print(data)

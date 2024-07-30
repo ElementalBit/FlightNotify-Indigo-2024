@@ -24,11 +24,11 @@ def flightUpdate():
     producer.flush()
     return data
 
-# Producer which publishes the flight status
-# Kafka Topic test2 and partition = 0
+# Producer which publishes the email request
+# Kafka Topic email
 @app.route('/api/notifications/email', methods=['POST'])
 def emailUpdate():
-    # flight data to be published
+    # email data to be sent
     data = request.get_json()
 
     producer = KafkaProducer(
@@ -41,11 +41,11 @@ def emailUpdate():
     producer.flush()
     return data
 
-# Producer which publishes the flight status
-# Kafka Topic test2 and partition = 1
+# Producer which publishes the sms request
+# Kafka Topic sms
 @app.route('/api/notifications/sms', methods=['POST'])
 def smsUpdate():
-    # flight data to be published
+    # sms data to be sent
     data = request.get_json()
 
     producer = KafkaProducer(
