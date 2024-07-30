@@ -1,0 +1,225 @@
+body {
+    background-color: #dce4d7;
+}
+
+header {
+    padding: 10px 60px;
+    background-color: #E3EBD5;
+    border-radius: 0px 0px 40px 40px;
+    box-shadow: 0 4px 8px 0 rgba(97, 94, 94, 0.2), 0 6px 20px 0 rgba(83, 82, 82, 0.19);
+}
+
+.header-logo {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
+
+.header-title {
+    color: black;
+    font-weight: bold;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+
+.container {
+    min-height: 50vh;
+}
+
+.container-fluid {
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+
+/* ===================== General Styles ===================== */
+
+.page-header {
+    margin: 40px 0px 20px;
+}
+
+.page-title {
+    font-size: 5rem;
+    font-weight: bold;
+}
+
+.page-title-secondary {
+    font-size: 3rem;
+    font-weight: bold;
+    opacity: 0.6;
+    text-align: center;
+}
+
+/* For Tabular Content */
+.table-box {
+    background-color: #fff;
+    border-radius: 40px 40px 0px 0px;
+    padding: 40px;
+    min-height: 35vh;
+}
+
+.pad-tb-40 {
+    padding: 60px 0px;
+}
+
+.mt-40 {
+    margin-top: 40px;
+}
+
+.colored-section {
+    background-color: #8fba59d8;
+}
+
+.white-section {
+    background-color: #fff;
+}
+
+/* Table Styling */
+th.tb-5 {
+    width: 5%;
+}
+
+th.tb-10 {
+    width: 10%;
+}
+
+th.tb-50 {
+    width: 50%;
+}
+
+th.tb-20 {
+    width: 20%;
+}
+
+/* Fixed Button */
+
+.fixed-bottom-right {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    padding: 5px;
+    border-radius: 50%;
+    background-color: #609966;
+}
+
+/* Modal Syling */
+.show-modal {
+    display: block;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+/*-------------- Home Page Styling --------------*/
+
+/* Home Title Section */
+#home-title {
+    background-image: url("/images/background-mountain.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.gradient-background {
+    background: linear-gradient(300deg, #6cd3ae, #ceecaa, #dce4d7);
+    background-size: 180% 180%;
+    z-index: -1;
+}
+
+.bi {
+    vertical-align: baseline;
+}
+
+.title-img {
+    width: 100%;
+    height: 600px;
+    object-fit: contain;
+    padding-bottom: 40px;
+}
+
+/* Home About Section */
+.about-img {
+    width: 100%;
+    height: 400px;
+    object-fit: contain;
+}
+
+
+/* Home Team Smriti Section */
+.member {
+    background-color: #fff;
+}
+
+.member-info {
+    text-align: center;
+    padding: 20px;
+}
+
+.member-info p {
+    margin-top: 10px;
+}
+
+/* Home Research Section */
+
+/* Contact Us Section */
+#Contact img {
+    width: 100%;
+    object-fit: contain;
+}
+
+/*-------------- My Decks Styling --------------*/
+.card {
+    border-radius: 10px;
+}
+
+.card-img-top {
+    border-radius: 10px 10px 0px 0px;
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+}
+
+.card-body {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 0px 0px 10px 10px;
+}
+
+/* Show Cards Styling */
+.card-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.card-container div {
+    padding: 40px 0px 60px;
+}
+
+.flashcard img{
+    border-radius: 20px;
+}
+
+/*-------------- Login Page Styling --------------*/
+.login-box {
+    background-color: #fff;
+}
+
+.login-card-img {
+    width: 100%;
+    height: 500px;
+    object-fit: contain;
+}
+
+.login-card {
+    margin: 50px 0px;
+    padding: 50px 0px;
+}
+
+.login-card button {
+    width: 100%;
+    margin: 0px 0px 20px;
+}
+
+/* --------------- Footer -------------- */
+.footer-container {
+    padding: 40px 60px;
+    background-color: #fff;
+}
