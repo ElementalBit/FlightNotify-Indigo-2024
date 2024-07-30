@@ -26,11 +26,11 @@ FlightNotify is built using a combination of modern technologies to ensure relia
 
 - **Backend:**
   - **Python:** Core programming language for the backend.
-  - **Flask:** Micro web framework for building the API.
-  - **Kafka:** Distributed event streaming platform for real-time data processing.
+  - **Flask:** Micro web framework for building the API. Port=5000 and 5050
+  - **Kafka:** Distributed event streaming platform for real-time data processing. Port=9092
 
 - **Frontend:**
-  - **React:** JavaScript library for building user interfaces.
+  - **React:** JavaScript library for building user interfaces. Port5173
   - **HTML:** Standard markup language used for creating and structuring content on the web.
   - **Tailwind CSS:** CSS framework for responsive design.
 
